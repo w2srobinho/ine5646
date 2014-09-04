@@ -8,9 +8,9 @@ package ine5646.exemplorest;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
-import javax.websocket.server.PathParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 

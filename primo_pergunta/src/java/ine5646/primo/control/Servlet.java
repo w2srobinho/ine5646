@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "ServletVerificador", urlPatterns = {"/verifique"})
-public class ServletVerificador extends HttpServlet 
+public class Servlet extends HttpServlet 
 {
     /**
      * Handles the HTTP <code>GET</code> method.

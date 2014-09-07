@@ -76,18 +76,14 @@ public class Servlet extends HttpServlet
     private double verifyTokens(String[] tokens) 
             throws IllegalArgumentException
     {
-        if (tokens.length != 4) {
-            throw new IllegalArgumentException("número de parâmetros incorreto! Exemplo: soma/5/8");
+        if (tokens.length < 1) {
+            throw new IllegalArgumentException("tem que ter pelo menos um número");
         }
-
-        if (!tokens[2].matches("\\d+") || !tokens[3].matches("\\d+")) {
-            throw new NumberFormatException();
-        }
-
         return calcRest(tokens);
     }
 
     private double calcRest(String[] tokens)
+            throws NumberFormatException
     {
         Double firstNumber = Double.parseDouble(tokens[2]);
         Double secondNumber = Double.parseDouble(tokens[3]);

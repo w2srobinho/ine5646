@@ -1,0 +1,42 @@
+@(usuario: models.Usuario, optUsuarios: Option[List[models.Usuario]] = None)
+
+@main("Logado") {
+<h1>Bem vindo @usuario.nome</h1>
+
+@if(!usuario.admin) {
+<p>Se desejar, altere seu nome e/ou sua senha.</p>
+
+<form action="@routes.Application.altereUsuario" method="post">
+   <p>Login: @usuario.login <br>
+   Nome: <input type="text" name="nome" value="@usuario.nome"><br>
+   Senha: <input type="password" name="senha" value="@usuario.senha"><br>
+   <button>Alterar</button>
+</form>
+
+
+} else {
+
+
+ <h2>Usuários Cadastrados</h2>
+   
+   @if(optUsuarios.get.isEmpty) {
+      <p>Não há usuários cadastrados.</p>
+   } else {
+       <ol>
+       @for(usuario <- optUsuarios.get) {
+           <li>@usuario.nome, @usuario.login, @usuario.senha</li>
+       }   
+       </ol>  
+       <form action="@routes.Application.apagueTudo" method="post">
+         <button>Remover Todos os Usuários</button>
+       </form>
+     }
+}
+
+
+
+<form action="@routes.Application.encerreSessao" method="post">
+  <button>Sair</button>
+</form>
+
+}

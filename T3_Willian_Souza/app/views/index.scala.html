@@ -1,0 +1,16 @@
+@(loginURL: String, host: String)
+
+@main("INE5646 - Previsao do Tempo") {
+ <h1>INE5646 - Previsao do Tempo</h1>
+  <a href="@loginURL">
+      Login<img src="@routes.Assets.at("images/google.png")"
+  </a>
+
+  @if(host.equals("localhost:9000")) {
+      <br><br>
+      <a href="http://web.willian.souza.vms.ufsc.br:9000">
+          Servidor UFSC
+      </a>
+  }
+ 
+}

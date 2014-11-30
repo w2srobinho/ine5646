@@ -1,0 +1,11 @@
+@(nomes: List[String])
+
+<h1>INE5646 - Simples 2</h1>
+
+<h2>Os @nomes.length jogadores</h2>
+
+<ul>
+    @for(jogador <- nomes) {
+    <li>@jogador</li>
+    }
+</ul>

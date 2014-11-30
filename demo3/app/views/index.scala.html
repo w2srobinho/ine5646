@@ -1,0 +1,10 @@
+@(corpos: List[models.Corpo])
+<h1>INE5646 - Simples 3</h1>
+
+<h2>Qtd de corpos: @corpos.length</h2>
+
+<ol>
+    @for(corpo <- corpos) {
+        <li>Nome: @corpo.nome Distância: @corpo.distancia Tempo: @corpo.tempo Velocidade Média: @corpo.velocidadeMedia</li>
+    }
+</ol>

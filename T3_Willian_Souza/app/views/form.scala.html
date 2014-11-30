@@ -1,0 +1,41 @@
+@* form Template File *@
+@(usuario: models.oauth2.Usuario, resultado: Option[models.Previsao] = None, cidade: Option[String] = None, quantidade: Option[String] = Some("1"), msgErro: Option[String] = None)
+
+@main("Pesquisar") {
+    <h1>INE5646 - Previsao do Tempo</h1>
+    <p>Usuario: @usuario.nome <img src="@usuario.pic" width="100" height="100"></p>
+    <form action="processe" method="post">
+      Nome da cidade: <input type="text" name="cidade" placeholder="digite a cidade" value=@cidade>
+      <br><br>
+      Número de dias: <input type="number" name="quantidade" min="1" max="10" value=@quantidade>
+      <button>Calcule</button>
+    </form>
+
+    @if(msgErro != None) {
+        <h4>@msgErro</h4>
+    }
+
+    @resultado match {
+        case None => {}
+        case Some(r) => {
+            @if(r.optErro == None) {
+                <h3>Previsão para: @r.cidade / @r.optPais</h3>
+                @for(i <- 0 until r.optImgs.size) {
+                    <img src=@r.optImgs(i)> <br>
+                    Dia:                @r.optDataFormatoPadrao(r.optDatas(i)) <br>
+                    Descrição:          @r.optDescricoes(i) <br>
+                    Temperatura Mínima: @r.optMinimas(i) <br>
+                    Temperatura Máxima: @r.optMaximas(i) <br>
+                    Humidade do ar:     @r.optHumidades(i) <br>
+                    <br>
+                }
+            } else {
+                <h4>@r.optErro</h4>
+            }
+        }
+    }
+
+    <form action="sair" method="post">
+      <button>Sair</button>
+    </form>
+}

@@ -1,0 +1,15 @@
+@(loginURL: String, path: String)
+
+@main("INE5646 - Previsão do Tempo") {
+ <h1>INE5646 - Previsão do Tempo</h1>
+  <a href="@loginURL">
+     Login<img src="@routes.Assets.at("images/google.png")">
+  </a>
+  <br><br>
+  @if(!path.toString.contains("localhost:9000")){
+  	<h2>Versão na Nuvem</h2>
+  	<p><h4>Também está disponível uma versão na nuvem, clique <a href=nuvem>aqui</a> para acessá-la.</h4></p>
+  }
+
+
+}
